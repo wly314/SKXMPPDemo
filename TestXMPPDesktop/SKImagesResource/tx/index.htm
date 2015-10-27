@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jquery右下角浮动窗口 - 站长素材</title>
+<style type="text/css">
+* { margin:0; padding:0;}
+</style>
+<script type="text/javascript" src="jquery_1_7.js"></script>
+<script type="text/javascript" src="King_Chance_Layer.js"></script>
+</head>
+
+<body style="height:2000px;">
+	<div class="King_Chance_Layer">
+    	<div class="King_Chance_LayerCont" style="display:none;">
+        	<div class="King_Chance_Layer_Close">Close</div>
+            <div class="King_Chance_Layer_Title">SHOPBEST 商城SHOPBEST 商城SHOPBEST 商城SHOPBEST 商城</div>
+            <div class="King_Chance_Layer_Btn">
+            	<ul>
+                	<li><a href="#" title="百搭潮">百搭潮</a></li>
+                    <li><a href="#" title="抗皱棉">抗皱棉</a></li>
+                    <li><a href="#" title="植绒">植绒</a></li>
+                    <li><a href="#" title="潮范">潮范</a></li>
+                </ul>
+            </div>
+            <div class="King_Chance_Layer_Content">
+            	<ul>
+                	<li><a href="#" title="百搭潮"><img src="ipush1.jpg" alt="百搭潮"></a></li>
+                    <li><a href="#" title="抗皱棉"><img src="ipush2.jpg" alt="抗皱棉"></a></li>
+                    <li><a href="#" title="植绒"><img src="ipush3.jpg" alt="植绒"></a></li>
+                    <li><a href="#" title="潮范"><img src="ipush4.jpg" alt="潮范"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+	$(document).ready(function(){
+		var King_Chance_Layer_Array = new Array();
+		King_Chance_Layer_Array[0] = 10;
+		King_Chance_Layer_Array[1] = 10;
+		King_Chance_Layer_Array[2] = 10;
+		King_Chance_Layer_Array[3] = 10;
+		King_Chance_Layer_Array[4] = 10;
+		King_Chance_Layer_Array[5] = 10;
+		King_Chance_Layer_Array[6] = 40;
+		King_Chance_Layer_Probability(King_Chance_Layer_Array);
+		});
+	</script>
+</body>
+</html>
