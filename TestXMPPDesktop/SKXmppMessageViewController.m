@@ -9,6 +9,7 @@
 #import "SKXmppMessageViewController.h"
 
 #import "SKInputViewToolBar.h"
+#import "SKXmppMessageCell.h"
 
 @interface MMTextAttachment : NSTextAttachment {
     
@@ -42,10 +43,11 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
+    UITableView *skTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    skTableView.delegate = self;
+    skTableView.dataSource = self;
+    [self.view addSubview:skTableView];
+    skTableView.separatorColor = [UIColor clearColor];
     
     //自定义navigationItem title
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
@@ -114,18 +116,42 @@
     return 100;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    NSMutableAttributedString * string = [[ NSMutableAttributedString alloc ] initWithString:@"123456789101112计起泡起泡起泡起泡12计起泡起泡起泡起泡12计起泡起泡起泡起泡12计起泡起泡起泡起泡"  attributes:nil ] ;
+    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:CONTENT_LABEL_FONT_SIZE] range:NSMakeRange(0,string.length-1)];
+    
+    MMTextAttachment * textAttachment = [[ MMTextAttachment alloc ] initWithData:nil ofType:nil ] ;
+    UIImage * smileImage = [ UIImage imageNamed:@"a.jpg" ]  ;  //my emoticon image named a.jpg
+    textAttachment.image = smileImage ;
+    
+    NSAttributedString * textAttachmentString = [ NSAttributedString attributedStringWithAttachment:textAttachment ] ;
+    [ string insertAttributedString:textAttachmentString atIndex:6] ;
+    
+    CGRect contentRect = [SKXmppMessageCell contentRectOfString:string];
+    
+    return contentRect.size.height;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *cellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    SKXmppMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[SKXmppMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    NSMutableAttributedString * string = [[ NSMutableAttributedString alloc ] initWithString:@"123456789101112计算"  attributes:nil ] ;
-    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16.0] range:NSMakeRange(0,string.length-1)];
+    cell.skMessageType = SKMessageTypeSend;
+    if (indexPath.row%2== 0) {
+        
+        cell.skMessageType = SKMessageTypeReviced;
+    }
+    
+    NSMutableAttributedString * string = [[ NSMutableAttributedString alloc ] initWithString:@"123456789101112计起泡起泡起泡起泡12计起泡起泡起泡起泡12计起泡起泡起泡起泡12计起泡起泡起泡起泡"  attributes:nil ] ;
+    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:CONTENT_LABEL_FONT_SIZE] range:NSMakeRange(0,string.length-1)];
     
     MMTextAttachment * textAttachment = [[ MMTextAttachment alloc ] initWithData:nil ofType:nil ] ;
     UIImage * smileImage = [ UIImage imageNamed:@"a.jpg" ]  ;  //my emoticon image named a.jpg
@@ -134,7 +160,7 @@
     NSAttributedString * textAttachmentString = [ NSAttributedString attributedStringWithAttachment:textAttachment ] ;
     [ string insertAttributedString:textAttachmentString atIndex:6 ] ;
     
-    cell.textLabel.attributedText = string ;
+    cell.skContentLabel.attributedText = string;
     
     return cell;
 }

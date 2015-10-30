@@ -55,6 +55,11 @@
 		D865E7031BDE0B7400F6F5FC /* King_Chance_Layer_Title6.gif in Resources */ = {isa = PBXBuildFile; fileRef = D865E6E31BDE0B7400F6F5FC /* King_Chance_Layer_Title6.gif */; };
 		D865E7041BDE0B7400F6F5FC /* King_Chance_Layer_Title7.gif in Resources */ = {isa = PBXBuildFile; fileRef = D865E6E41BDE0B7400F6F5FC /* King_Chance_Layer_Title7.gif */; };
 		D865E7051BDE0B7400F6F5FC /* 说明.txt in Resources */ = {isa = PBXBuildFile; fileRef = D865E6E51BDE0B7400F6F5FC /* 说明.txt */; };
+		D87883BF1BE346BA002D1FB4 /* SKXmppMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D87883BE1BE346BA002D1FB4 /* SKXmppMessageCell.m */; };
+		D87883C21BE3543E002D1FB4 /* shishengjiaoliu5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87883C01BE3543E002D1FB4 /* shishengjiaoliu5@2x.png */; };
+		D87883C31BE3543E002D1FB4 /* shishengjiaoliu5@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87883C11BE3543E002D1FB4 /* shishengjiaoliu5@3x.png */; };
+		D87883C61BE35471002D1FB4 /* shishengjiaoliu6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87883C41BE35471002D1FB4 /* shishengjiaoliu6@2x.png */; };
+		D87883C71BE35471002D1FB4 /* shishengjiaoliu6@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87883C51BE35471002D1FB4 /* shishengjiaoliu6@3x.png */; };
 		D883A9111BD79004006BC28D /* SKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D883A9101BD79004006BC28D /* SKCoreDataManager.m */; };
 		D8BDB8C31BDF89B0000C74A5 /* a@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8BDB8C21BDF89B0000C74A5 /* a@2x.jpg */; };
 		D8D2ECC21BDDD921003A4795 /* chat_bottom_keyboard_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D2ECBC1BDDD921003A4795 /* chat_bottom_keyboard_nor@3x.png */; };
@@ -297,6 +302,12 @@
 		D865E6E31BDE0B7400F6F5FC /* King_Chance_Layer_Title6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = King_Chance_Layer_Title6.gif; sourceTree = "<group>"; };
 		D865E6E41BDE0B7400F6F5FC /* King_Chance_Layer_Title7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = King_Chance_Layer_Title7.gif; sourceTree = "<group>"; };
 		D865E6E51BDE0B7400F6F5FC /* 说明.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "说明.txt"; sourceTree = "<group>"; };
+		D87883BD1BE346BA002D1FB4 /* SKXmppMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKXmppMessageCell.h; sourceTree = "<group>"; };
+		D87883BE1BE346BA002D1FB4 /* SKXmppMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKXmppMessageCell.m; sourceTree = "<group>"; };
+		D87883C01BE3543E002D1FB4 /* shishengjiaoliu5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shishengjiaoliu5@2x.png"; sourceTree = "<group>"; };
+		D87883C11BE3543E002D1FB4 /* shishengjiaoliu5@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shishengjiaoliu5@3x.png"; sourceTree = "<group>"; };
+		D87883C41BE35471002D1FB4 /* shishengjiaoliu6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shishengjiaoliu6@2x.png"; sourceTree = "<group>"; };
+		D87883C51BE35471002D1FB4 /* shishengjiaoliu6@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shishengjiaoliu6@3x.png"; sourceTree = "<group>"; };
 		D883A90F1BD79004006BC28D /* SKCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKCoreDataManager.h; sourceTree = "<group>"; };
 		D883A9101BD79004006BC28D /* SKCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKCoreDataManager.m; sourceTree = "<group>"; };
 		D8BDB8C01BDF7B9E000C74A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -699,6 +710,8 @@
 				D8F3FA561BD5D291006C1D2F /* SKXmppViewController.m */,
 				D8D2ECC81BDDF9C4003A4795 /* SKInputViewToolBar.h */,
 				D8D2ECC91BDDF9C4003A4795 /* SKInputViewToolBar.m */,
+				D87883BD1BE346BA002D1FB4 /* SKXmppMessageCell.h */,
+				D87883BE1BE346BA002D1FB4 /* SKXmppMessageCell.m */,
 				D8EF601C1BDA10860097A353 /* SKXmppMessageViewController.h */,
 				D8EF601D1BDA10860097A353 /* SKXmppMessageViewController.m */,
 				D8F3FA5B1BD5E950006C1D2F /* SKXMPPXmlManager.h */,
@@ -787,6 +800,10 @@
 		D8D2ECBB1BDDD921003A4795 /* SKImagesResource */ = {
 			isa = PBXGroup;
 			children = (
+				D87883C01BE3543E002D1FB4 /* shishengjiaoliu5@2x.png */,
+				D87883C11BE3543E002D1FB4 /* shishengjiaoliu5@3x.png */,
+				D87883C41BE35471002D1FB4 /* shishengjiaoliu6@2x.png */,
+				D87883C51BE35471002D1FB4 /* shishengjiaoliu6@3x.png */,
 				D865E6C51BDE0B7400F6F5FC /* tx */,
 				D8D2ECBC1BDDD921003A4795 /* chat_bottom_keyboard_nor@3x.png */,
 				D8D2ECBE1BDDD921003A4795 /* chat_bottom_smile_nor@3x.png */,
@@ -1809,6 +1826,7 @@
 				D865E7011BDE0B7400F6F5FC /* King_Chance_Layer_Title4.png in Resources */,
 				D8BDB8C31BDF89B0000C74A5 /* a@2x.jpg in Resources */,
 				D865E6ED1BDE0B7400F6F5FC /* King_Chance_Layer1.css in Resources */,
+				D87883C21BE3543E002D1FB4 /* shishengjiaoliu5@2x.png in Resources */,
 				D8D2ECC41BDDD921003A4795 /* chat_bottom_smile_nor@3x.png in Resources */,
 				D8EF60251BDA33A60097A353 /* shishengjiaoliu2@2x.png in Resources */,
 				D865E6E61BDE0B7400F6F5FC /* index.htm in Resources */,
@@ -1831,6 +1849,8 @@
 				D8D2ECC51BDDD921003A4795 /* chat_bottom_smile_press@3x.png in Resources */,
 				D865E6F71BDE0B7400F6F5FC /* King_Chance_Layer_Btn7.gif in Resources */,
 				D865E6F81BDE0B7400F6F5FC /* King_Chance_Layer_Btn_hover4.jpg in Resources */,
+				D87883C71BE35471002D1FB4 /* shishengjiaoliu6@3x.png in Resources */,
+				D87883C61BE35471002D1FB4 /* shishengjiaoliu6@2x.png in Resources */,
 				D865E6EF1BDE0B7400F6F5FC /* King_Chance_Layer3.css in Resources */,
 				D865E6F51BDE0B7400F6F5FC /* King_Chance_Layer_Btn5.gif in Resources */,
 				D8F3FBEB1BD64267006C1D2F /* copying.txt in Resources */,
@@ -1850,6 +1870,7 @@
 				D865E7051BDE0B7400F6F5FC /* 说明.txt in Resources */,
 				D865E6FD1BDE0B7400F6F5FC /* King_Chance_Layer_Title1.gif in Resources */,
 				D8EF60211BDA33440097A353 /* shishengjiaoliuemoj@2x.png in Resources */,
+				D87883C31BE3543E002D1FB4 /* shishengjiaoliu5@3x.png in Resources */,
 				D865E6EA1BDE0B7400F6F5FC /* ipush4.jpg in Resources */,
 				D865E6EE1BDE0B7400F6F5FC /* King_Chance_Layer2.css in Resources */,
 				D865E6FB1BDE0B7400F6F5FC /* King_Chance_Layer_Content4.gif in Resources */,
@@ -1977,6 +1998,7 @@
 				D8F3FC4F1BD64267006C1D2F /* XEP_0223.m in Sources */,
 				D80FB8391BD892C8003F8000 /* SKXmppContactCell.m in Sources */,
 				D8F3FC6D1BD64268006C1D2F /* DDXMLElement.m in Sources */,
+				D87883BF1BE346BA002D1FB4 /* SKXmppMessageCell.m in Sources */,
 				D8F3FBEF1BD64267006C1D2F /* XMPPJID.m in Sources */,
 				D8F3FBF31BD64267006C1D2F /* XMPPPresence.m in Sources */,
 				D8F3FBFA1BD64267006C1D2F /* XMPPGoogleSharedStatus.m in Sources */,

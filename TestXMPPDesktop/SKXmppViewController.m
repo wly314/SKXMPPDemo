@@ -34,13 +34,16 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    //JID 51327@murp-ymm2003/iphone_teacher_1.0.8
+//    JID 51327@murp-ymm2003/iphone_teacher_1.0.8
     SKXMPPUser *loginUser = [[SKXMPPUser alloc] init];
     loginUser.usernameString = @"39038";
     loginUser.userPasswordString = @"admin";
     
     SKXMPPServer *loginServer = [[SKXMPPServer alloc] init];
-    
+    loginServer.serverDomainString = @"murp-ymm2003";
+    loginServer.serverResourceString = @"iphone_teacher_1.0.8";
+    loginServer.serverString = @"221.226.93.2";
+    loginServer.serverPort = 5222;
     
     SKXMPPLoginInfo *xmppLoginInfo = [[SKXMPPLoginInfo alloc] init];
     xmppLoginInfo.loginUser = loginUser;

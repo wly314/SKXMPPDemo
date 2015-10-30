@@ -10,6 +10,8 @@
 
 #import "SKXMPPViewController.h"
 
+#import "SKXmppMessageViewController.h"
+
 @interface ViewController ()<UITextViewDelegate> {
     
     
@@ -46,9 +48,16 @@
 
 - (void)btnClick {
     
-    SKXmppViewController *xmppVC = [[SKXmppViewController alloc] init];
+    SKXmppMessageViewController *xmppVC = [[SKXmppMessageViewController alloc] init];
     xmppVC.navigationItem.title = @"群组列表";
     [self.navigationController pushViewController:xmppVC animated:YES];
+    
+//    SKXmppViewController *xmppVC = [[SKXmppViewController alloc] init];
+//    xmppVC.navigationItem.title = @"群组列表";
+//    [self.navigationController pushViewController:xmppVC animated:YES];
+    
+    
+    
 //    xmppVC.skXMPPUserNameString = @"51327";
 //    xmppVC.skXMPPUserPasswordString = @"admin";
 //    
