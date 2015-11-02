@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@interface SKLabel : UILabel
+
+@end
+
 //文本的字体大小
 #define CONTENT_LABEL_FONT_SIZE 17.0
 
@@ -32,7 +36,7 @@ typedef NS_OPTIONS(NSInteger, SKMessageType) {
 
 @property (nonatomic, strong)UIImageView *skAvatarImageView;//头像
 @property (nonatomic, strong)UIImageView *skPaopaoImageView;//聊天消息气泡泡
-@property (nonatomic, strong)UILabel     *skContentLabel;//聊天内容
+@property (nonatomic, strong)SKLabel     *skContentLabel;//聊天内容
 
 //获取起泡大小 －此方法仅适用于该聊天计算高度
 + (CGRect)contentRectOfString:(NSAttributedString *)aString;

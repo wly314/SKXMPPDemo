@@ -8,6 +8,27 @@
 
 #import "SKXmppMessageCell.h"
 
+@implementation SKLabel
+
+- (CGSize)preferredSizeWithMaxWidth:(CGFloat)maxWidth {
+    
+    CGSize size = [self sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)];
+    size.width = fmin(size.width, maxWidth); //在numberOfLine为1模式下返回的可能会比maxWidth大，所以这里我们限制下
+    return size;
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+    
+    size = [super sizeThatFits:size];
+    if (size.height>0) {
+        
+        size.height++;
+    }
+    return size;
+}
+
+@end
+
 @implementation SKXmppMessageCell
 
 @synthesize skMessageType = _skMessageType;
@@ -42,7 +63,7 @@
         [skContentBackgroundView addSubview:_skPaopaoImageView];
         
         //聊天内容
-        _skContentLabel = [[UILabel alloc] init];
+        _skContentLabel = [[SKLabel alloc] init];
         _skContentLabel.backgroundColor = [UIColor grayColor];
         _skContentLabel.numberOfLines = 0;
         [_skContentLabel setFont:[UIFont systemFontOfSize:CONTENT_LABEL_FONT_SIZE]];
@@ -77,14 +98,14 @@
         //首先获得图片 聊天气泡图片
         UIImage *paopaoImage = [UIImage imageNamed:@"shishengjiaoliu6.png"];
         //拉伸的边界根据图片来处理－上左下右 这里用中心点向外扩展10
-        CGFloat capInsetsW = paopaoImage.size.width/2;//水平
-        CGFloat capInsetsH = paopaoImage.size.height/2;//竖直
-        UIEdgeInsets insets = UIEdgeInsetsMake(capInsetsH - 10, capInsetsW - 10, capInsetsH + 10, capInsetsW + 10);
+        CGFloat capInsetsW = paopaoImage.size.width;//水平
+        CGFloat capInsetsH = paopaoImage.size.height;//竖直
+        UIEdgeInsets insets = UIEdgeInsetsMake(capInsetsH - 15, capInsetsW/2 - 10, capInsetsH - 5, capInsetsW/2 + 10);
         // 指定为拉伸模式，伸缩后重新赋值
         paopaoImage = [paopaoImage resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
         
-        //首先计算文本高度
-        CGRect contentRect = [SKXmppMessageCell contentRectOfString:_skContentLabel.attributedText];
+        //使用cell的高度 还要判断是否有时间，有的话要加上时间
+        CGRect contentRect = self.bounds;
         
 //         CGSize optimalSize = [_skContentLabel optimumSize:YES];
         
@@ -111,14 +132,16 @@
         //首先获得图片 聊天气泡图片
         UIImage *paopaoImage = [UIImage imageNamed:@"shishengjiaoliu5.png"];
         //拉伸的边界根据图片来处理－上左下右 这里用中心点向外扩展10
-        CGFloat capInsetsW = paopaoImage.size.width/2;//水平
-        CGFloat capInsetsH = paopaoImage.size.height/2;//竖直
-        UIEdgeInsets insets = UIEdgeInsetsMake(capInsetsH - 10, capInsetsW - 10, capInsetsH + 10, capInsetsW + 10);
+        CGFloat capInsetsW = paopaoImage.size.width;//水平
+        CGFloat capInsetsH = paopaoImage.size.height;//竖直
+        UIEdgeInsets insets = UIEdgeInsetsMake(capInsetsH - 15, capInsetsW/2 - 10, capInsetsH-5, capInsetsW/2 + 10);
         // 指定为拉伸模式，伸缩后重新赋值
         paopaoImage = [paopaoImage resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
         
-        //首先计算文本高度
-        CGRect contentRect = [SKXmppMessageCell contentRectOfString:_skContentLabel.attributedText];
+//        //首先计算文本高度
+//        CGRect contentRect = [SKXmppMessageCell contentRectOfString:_skContentLabel.attributedText];
+        //使用cell的高度
+        CGRect contentRect = self.bounds;
         
         //消息内容比起泡背景宽高各小20(就是上下左右各10) 起泡小箭头宽度为10
         CGFloat originX = 10;//上下左右各10
@@ -134,11 +157,19 @@
     }
 }
 
+static SKLabel *skLabel() {
+    
+    static SKLabel *_skLabel = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _skLabel = [[SKLabel alloc] init];
+        _skLabel.font = [UIFont systemFontOfSize:CONTENT_LABEL_FONT_SIZE];
+        _skLabel.numberOfLines = 0;
+    });
+    return _skLabel;
+}
+
 + (CGRect)contentRectOfString:(NSAttributedString *)aString {
-    
-    NSLog(@"---=== +++  %f", aString.size.height) ;
-    
-   
     
     //此方法仅适用于改聊天计算高度
     //消息内容比起泡背景宽高各小20(就是上下左右各10) 起泡小箭头宽度为10
@@ -151,25 +182,16 @@
     CGFloat avatarWRange = (40+10)*2;
     
     //起泡的宽度 ＝ cell的宽度 - 头像距离
-//    CGRect sizeRect = [aString boundingRectWithSize:CGSizeMake((cellW - avatarWRange)-originX*2-arrowW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIFont systemFontOfSize:CONTENT_LABEL_FONT_SIZE], NSFontAttributeName, nil] context:nil];
     CGSize size = CGSizeMake((cellW - avatarWRange)-originX*2-arrowW, CGFLOAT_MAX);
-    CGRect sizeRect = [aString boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading context:nil];
     
-    sizeRect = CGRectMake(sizeRect.origin.x, sizeRect.origin.y, sizeRect.size.width, sizeRect.size.height+originX*2);
+    //nib里左右边距是10
+    SKLabel *label = skLabel();
+    label.attributedText = aString;
     
+    size = [label preferredSizeWithMaxWidth:size.width];
     
-//    NSTextStorage *textStorage = [[NSTextStorage alloc] init];
-//    NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
-//    [textStorage addLayoutManager:layoutManager];
-//    NSTextContainer *textContainer = [[NSTextContainer alloc] initWithSize:CGSizeMake(size.width, FLT_MAX)];
-//    [textContainer setLineFragmentPadding:0.0];
-//    [layoutManager addTextContainer:textContainer];
-//    [textStorage setAttributedString:aString];
-//    [layoutManager glyphRangeForTextContainer:textContainer];
-//    CGRect frame = [layoutManager usedRectForTextContainer:textContainer];
-//    NSLog(@"3:%@", NSStringFromCGRect(frame));
-    
-    return sizeRect;
+    return CGRectMake(0, 0, size.width, size.height+10*2);
 }
+
 
 @end
